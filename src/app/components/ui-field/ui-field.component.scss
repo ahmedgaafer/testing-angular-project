@@ -1,0 +1,127 @@
+.ui-field-wrapper {
+  --field-width: 200px;
+  --field-height: 60px;
+  --label-height: 20px;
+
+  width: var(--field-width) !important;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .field-label {
+    flex-shrink: 0;
+    height: var(--label-height) !important;
+    min-height: var(--label-height) !important;
+    max-height: var(--label-height) !important;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 4px;
+    line-height: var(--label-height) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+
+    &.empty {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .required-star {
+      color: #d32f2f;
+      margin-left: 2px;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 1;
+    }
+  }
+}
+
+.ui-field {
+  --field-width: 200px;
+  --field-height: 60px;
+  --helper-height: 20px;
+
+  width: var(--field-width) !important;
+  height: var(--field-height) !important;
+  min-width: var(--field-width) !important;
+  max-width: var(--field-width) !important;
+  min-height: var(--field-height) !important;
+  max-height: var(--field-height) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .field-input-container {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - var(--helper-height));
+    min-height: calc(100% - var(--helper-height));
+    max-height: calc(100% - var(--helper-height));
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    display: flex;
+    align-items: stretch;
+
+    // Ensure all input elements respect the container dimensions
+    ::ng-deep {
+      input,
+      textarea,
+      select {
+        width: 100% !important;
+        height: 100% !important;
+        box-sizing: border-box !important;
+        border: 1px solid #ccc;
+        padding: 8px;
+        font-size: 14px;
+        font-family: inherit;
+        outline: none;
+        overflow: hidden !important;
+
+        &:focus {
+          border-color: #1976d2;
+          outline: 2px solid rgba(25, 118, 210, 0.2);
+          outline-offset: -2px;
+        }
+      }
+
+      textarea {
+        resize: none !important;
+        overflow-y: auto !important;
+      }
+
+      select {
+        cursor: pointer;
+      }
+    }
+  }
+
+  // Error state styling
+  &.invalid,
+  &.has-error {
+    .field-input-container {
+      ::ng-deep {
+        input,
+        textarea,
+        select {
+          border-color: #d32f2f;
+        }
+      }
+    }
+  }
+
+  // Helper text area (projected content)
+  ::ng-deep app-ui-field-helper-text {
+    width: 100%;
+    flex-shrink: 0;
+    height: var(--helper-height) !important;
+    min-height: var(--helper-height) !important;
+    max-height: var(--helper-height) !important;
+    overflow: visible !important;
+  }
+}

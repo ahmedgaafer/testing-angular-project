@@ -1,0 +1,111 @@
+.ui-field-helper-text {
+  --helper-height: 20px;
+
+  width: 100%;
+  height: var(--helper-height) !important;
+  min-height: var(--helper-height) !important;
+  max-height: var(--helper-height) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: var(--helper-height) !important;
+  padding: 0 2px;
+  position: relative;
+  z-index: 1;
+
+  .helper-text-content {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 100%;
+    display: block;
+  }
+
+  .exclamation-mark {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #ff9800;
+    cursor: help;
+    position: relative;
+    z-index: 10000;
+
+    &.error-icon {
+      color: #d32f2f;
+
+      .error-circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #d32f2f;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1;
+      }
+    }
+
+    .tooltip {
+      position: fixed;
+      background-color: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      white-space: normal;
+      width: 250px;
+      max-width: 300px;
+      z-index: 999999;
+      font-size: 12px;
+      line-height: 1.4;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+      word-wrap: break-word;
+      text-align: left;
+      margin-bottom: 8px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #333;
+      }
+    }
+
+    &:hover .tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &.error {
+    color: #d32f2f;
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}

@@ -1,0 +1,22 @@
+<div class="ui-field-wrapper">
+  <label class="field-label" [class.empty]="!showLabel()">
+    @if (showLabel()) {
+    {{ label() }}
+    @if (isRequired()) {
+    <span class="required-star" aria-label="required">*</span>
+    } }
+  </label>
+  <div
+    class="ui-field"
+    [class.invalid]="isInvalid()"
+    [class.touched]="isTouched()"
+    [class.dirty]="isDirty()"
+    [class.has-error]="hasError()"
+    [attr.aria-invalid]="isInvalid()"
+  >
+    <div class="field-input-container">
+      <ng-content></ng-content>
+    </div>
+    <ng-content select="app-ui-field-helper-text"></ng-content>
+  </div>
+</div>

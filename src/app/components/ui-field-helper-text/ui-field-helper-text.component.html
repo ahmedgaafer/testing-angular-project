@@ -1,0 +1,33 @@
+<div
+  class="ui-field-helper-text"
+  [class.error]="isError()"
+  [attr.aria-label]="text() || null"
+  [attr.aria-live]="isError() ? 'polite' : 'off'"
+  role="status"
+>
+  <span
+    #textElement
+    class="helper-text-content"
+    [class.has-overflow]="showExclamation()"
+  >
+    {{ displayText() }}
+  </span>
+  @if (showExclamation()) {
+  <span
+    #exclamationElement
+    class="exclamation-mark"
+    [class.error-icon]="isError()"
+    [attr.data-tooltip]="text()"
+    [attr.aria-label]="'Full message: ' + text()"
+    (mouseenter)="onExclamationHover($event)"
+    tabindex="0"
+    role="button"
+    aria-haspopup="true"
+  >
+    @if (isError()) {
+    <span class="error-circle">!</span>
+    } @else { ⚠ }
+    <span class="tooltip">{{ text() }}</span>
+  </span>
+  }
+</div>

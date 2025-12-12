@@ -1,0 +1,52 @@
+.showcase-form-container {
+  padding: 20px;
+  max-width: 100%;
+  overflow-x: auto;
+
+  h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  .description {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  .showcase-form {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 16px;
+    align-items: start;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    width: fit-content;
+    min-width: 100%;
+
+    .submit-button {
+      grid-column: 1 / -1;
+      width: 200px;
+      justify-self: center;
+      padding: 12px 24px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #1565c0;
+      }
+
+      &:active {
+        background-color: #0d47a1;
+      }
+    }
+  }
+}

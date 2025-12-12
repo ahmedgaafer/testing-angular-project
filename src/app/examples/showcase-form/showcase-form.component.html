@@ -1,0 +1,778 @@
+<div class="showcase-form-container">
+  <h1>Dense Form Showcase - Fixed Dimensions Test</h1>
+  <p class="description">
+    This form demonstrates fixed-dimension fields in a dense layout. All fields
+    maintain exact dimensions regardless of content, validation state, or helper
+    text length.
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="showcase-form">
+    <!-- Row 1 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('firstName')"
+      [label]="'First Name'"
+      [required]="true"
+    >
+      <input type="text" formControlName="firstName" placeholder="First Name" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('firstName').touched && getControl('firstName').invalid
+            ? getErrorMessage(getControl('firstName'), 'firstName')
+            : getHintText('firstName')
+        "
+        [isError]="
+          getControl('firstName').touched && getControl('firstName').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('lastName')"
+      [label]="'Last Name'"
+      [required]="true"
+    >
+      <input type="text" formControlName="lastName" placeholder="Last Name" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('lastName').touched && getControl('lastName').invalid
+            ? getErrorMessage(getControl('lastName'), 'lastName')
+            : getHintText('lastName')
+        "
+        [isError]="
+          getControl('lastName').touched && getControl('lastName').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('email')"
+      [label]="'Email Address'"
+    >
+      <input type="email" formControlName="email" placeholder="Email" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('email').touched && getControl('email').invalid
+            ? getErrorMessage(getControl('email'), 'email')
+            : getHintText('email')
+        "
+        [isError]="getControl('email').touched && getControl('email').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 2 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('phone')"
+      [label]="'Phone Number'"
+      [required]="true"
+    >
+      <input type="tel" formControlName="phone" placeholder="Phone" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('phone').touched && getControl('phone').invalid
+            ? getErrorMessage(getControl('phone'), 'phone')
+            : getHintText('phone')
+        "
+        [isError]="getControl('phone').touched && getControl('phone').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('age')"
+      [label]="'Age'"
+    >
+      <input type="number" formControlName="age" placeholder="Age" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('age').touched && getControl('age').invalid
+            ? getErrorMessage(getControl('age'), 'age')
+            : getHintText('age')
+        "
+        [isError]="getControl('age').touched && getControl('age').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('website')"
+    >
+      <input type="url" formControlName="website" placeholder="Website" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('website').touched && getControl('website').invalid
+            ? getErrorMessage(getControl('website'), 'website')
+            : getHintText('website')
+        "
+        [isError]="
+          getControl('website').touched && getControl('website').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 3 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('password')"
+      [label]="'Password'"
+      [required]="true"
+    >
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('password').touched && getControl('password').invalid
+            ? getErrorMessage(getControl('password'), 'password')
+            : getHintText('password')
+        "
+        [isError]="
+          getControl('password').touched && getControl('password').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('confirmPassword')"
+      [label]="'Confirm Password'"
+      [required]="true"
+    >
+      <input
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirm Password"
+      />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('confirmPassword').touched &&
+          getControl('confirmPassword').invalid
+            ? getErrorMessage(getControl('confirmPassword'), 'confirmPassword')
+            : getHintText('confirmPassword')
+        "
+        [isError]="
+          getControl('confirmPassword').touched &&
+          getControl('confirmPassword').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('country')"
+      [label]="'Country'"
+    >
+      <select formControlName="country">
+        <option value="">Select Country</option>
+        <option value="us">United States</option>
+        <option value="uk">United Kingdom</option>
+        <option value="ca">Canada</option>
+        <option value="au">Australia</option>
+      </select>
+      <app-ui-field-helper-text
+        [text]="
+          getControl('country').touched && getControl('country').invalid
+            ? getErrorMessage(getControl('country'), 'country')
+            : getHintText('country')
+        "
+        [isError]="
+          getControl('country').touched && getControl('country').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 4 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('city')"
+      [label]="'City'"
+      [required]="true"
+    >
+      <input type="text" formControlName="city" placeholder="City" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('city').touched && getControl('city').invalid
+            ? getErrorMessage(getControl('city'), 'city')
+            : getHintText('city')
+        "
+        [isError]="getControl('city').touched && getControl('city').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('zipCode')"
+      [label]="'Zip Code'"
+    >
+      <input type="text" formControlName="zipCode" placeholder="Zip Code" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('zipCode').touched && getControl('zipCode').invalid
+            ? getErrorMessage(getControl('zipCode'), 'zipCode')
+            : getHintText('zipCode')
+        "
+        [isError]="
+          getControl('zipCode').touched && getControl('zipCode').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('address')"
+      [label]="'Street Address'"
+      [required]="true"
+    >
+      <input type="text" formControlName="address" placeholder="Address" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('address').touched && getControl('address').invalid
+            ? getErrorMessage(getControl('address'), 'address')
+            : getHintText('address')
+        "
+        [isError]="
+          getControl('address').touched && getControl('address').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 5 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('company')"
+    >
+      <input type="text" formControlName="company" placeholder="Company" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('company').touched && getControl('company').invalid
+            ? getErrorMessage(getControl('company'), 'company')
+            : getHintText('company')
+        "
+        [isError]="
+          getControl('company').touched && getControl('company').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('jobTitle')"
+    >
+      <input type="text" formControlName="jobTitle" placeholder="Job Title" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('jobTitle').touched && getControl('jobTitle').invalid
+            ? getErrorMessage(getControl('jobTitle'), 'jobTitle')
+            : getHintText('jobTitle')
+        "
+        [isError]="
+          getControl('jobTitle').touched && getControl('jobTitle').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('salary')"
+    >
+      <input type="number" formControlName="salary" placeholder="Salary" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('salary').touched && getControl('salary').invalid
+            ? getErrorMessage(getControl('salary'), 'salary')
+            : getHintText('salary')
+        "
+        [isError]="getControl('salary').touched && getControl('salary').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 6 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('startDate')"
+    >
+      <input type="date" formControlName="startDate" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('startDate').touched && getControl('startDate').invalid
+            ? getErrorMessage(getControl('startDate'), 'startDate')
+            : getHintText('startDate')
+        "
+        [isError]="
+          getControl('startDate').touched && getControl('startDate').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('endDate')"
+    >
+      <input type="date" formControlName="endDate" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('endDate').touched && getControl('endDate').invalid
+            ? getErrorMessage(getControl('endDate'), 'endDate')
+            : getHintText('endDate')
+        "
+        [isError]="
+          getControl('endDate').touched && getControl('endDate').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('notes')"
+    >
+      <textarea formControlName="notes" placeholder="Notes"></textarea>
+      <app-ui-field-helper-text
+        [text]="
+          getControl('notes').touched && getControl('notes').invalid
+            ? getErrorMessage(getControl('notes'), 'notes')
+            : getHintText('notes')
+        "
+        [isError]="getControl('notes').touched && getControl('notes').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 7 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('skill1')"
+    >
+      <input type="text" formControlName="skill1" placeholder="Skill 1" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('skill1').touched && getControl('skill1').invalid
+            ? getErrorMessage(getControl('skill1'), 'skill1')
+            : getHintText('skill1')
+        "
+        [isError]="getControl('skill1').touched && getControl('skill1').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('skill2')"
+    >
+      <input type="text" formControlName="skill2" placeholder="Skill 2" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('skill2').touched && getControl('skill2').invalid
+            ? getErrorMessage(getControl('skill2'), 'skill2')
+            : getHintText('skill2')
+        "
+        [isError]="getControl('skill2').touched && getControl('skill2').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('skill3')"
+    >
+      <input type="text" formControlName="skill3" placeholder="Skill 3" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('skill3').touched && getControl('skill3').invalid
+            ? getErrorMessage(getControl('skill3'), 'skill3')
+            : getHintText('skill3')
+        "
+        [isError]="getControl('skill3').touched && getControl('skill3').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 8 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('language1')"
+    >
+      <input type="text" formControlName="language1" placeholder="Language 1" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('language1').touched && getControl('language1').invalid
+            ? getErrorMessage(getControl('language1'), 'language1')
+            : getHintText('language1')
+        "
+        [isError]="
+          getControl('language1').touched && getControl('language1').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('language2')"
+    >
+      <input type="text" formControlName="language2" placeholder="Language 2" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('language2').touched && getControl('language2').invalid
+            ? getErrorMessage(getControl('language2'), 'language2')
+            : getHintText('language2')
+        "
+        [isError]="
+          getControl('language2').touched && getControl('language2').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('language3')"
+    >
+      <input type="text" formControlName="language3" placeholder="Language 3" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('language3').touched && getControl('language3').invalid
+            ? getErrorMessage(getControl('language3'), 'language3')
+            : getHintText('language3')
+        "
+        [isError]="
+          getControl('language3').touched && getControl('language3').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 9 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('project1')"
+    >
+      <input type="text" formControlName="project1" placeholder="Project 1" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('project1').touched && getControl('project1').invalid
+            ? getErrorMessage(getControl('project1'), 'project1')
+            : getHintText('project1')
+        "
+        [isError]="
+          getControl('project1').touched && getControl('project1').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('project2')"
+    >
+      <input type="text" formControlName="project2" placeholder="Project 2" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('project2').touched && getControl('project2').invalid
+            ? getErrorMessage(getControl('project2'), 'project2')
+            : getHintText('project2')
+        "
+        [isError]="
+          getControl('project2').touched && getControl('project2').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('project3')"
+    >
+      <input type="text" formControlName="project3" placeholder="Project 3" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('project3').touched && getControl('project3').invalid
+            ? getErrorMessage(getControl('project3'), 'project3')
+            : getHintText('project3')
+        "
+        [isError]="
+          getControl('project3').touched && getControl('project3').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 10 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('reference1')"
+    >
+      <input
+        type="text"
+        formControlName="reference1"
+        placeholder="Reference 1"
+      />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('reference1').touched && getControl('reference1').invalid
+            ? getErrorMessage(getControl('reference1'), 'reference1')
+            : getHintText('reference1')
+        "
+        [isError]="
+          getControl('reference1').touched && getControl('reference1').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('reference2')"
+    >
+      <input
+        type="text"
+        formControlName="reference2"
+        placeholder="Reference 2"
+      />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('reference2').touched && getControl('reference2').invalid
+            ? getErrorMessage(getControl('reference2'), 'reference2')
+            : getHintText('reference2')
+        "
+        [isError]="
+          getControl('reference2').touched && getControl('reference2').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('reference3')"
+    >
+      <input
+        type="text"
+        formControlName="reference3"
+        placeholder="Reference 3"
+      />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('reference3').touched && getControl('reference3').invalid
+            ? getErrorMessage(getControl('reference3'), 'reference3')
+            : getHintText('reference3')
+        "
+        [isError]="
+          getControl('reference3').touched && getControl('reference3').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 11 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('education')"
+    >
+      <input type="text" formControlName="education" placeholder="Education" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('education').touched && getControl('education').invalid
+            ? getErrorMessage(getControl('education'), 'education')
+            : getHintText('education')
+        "
+        [isError]="
+          getControl('education').touched && getControl('education').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('certification')"
+    >
+      <input
+        type="text"
+        formControlName="certification"
+        placeholder="Certification"
+      />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('certification').touched &&
+          getControl('certification').invalid
+            ? getErrorMessage(getControl('certification'), 'certification')
+            : getHintText('certification')
+        "
+        [isError]="
+          getControl('certification').touched &&
+          getControl('certification').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('experience')"
+    >
+      <input
+        type="number"
+        formControlName="experience"
+        placeholder="Experience (years)"
+      />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('experience').touched && getControl('experience').invalid
+            ? getErrorMessage(getControl('experience'), 'experience')
+            : getHintText('experience')
+        "
+        [isError]="
+          getControl('experience').touched && getControl('experience').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <!-- Row 12 -->
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('bio')"
+    >
+      <textarea formControlName="bio" placeholder="Bio"></textarea>
+      <app-ui-field-helper-text
+        [text]="
+          getControl('bio').touched && getControl('bio').invalid
+            ? getErrorMessage(getControl('bio'), 'bio')
+            : getHintText('bio')
+        "
+        [isError]="getControl('bio').touched && getControl('bio').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('linkedin')"
+    >
+      <input type="url" formControlName="linkedin" placeholder="LinkedIn URL" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('linkedin').touched && getControl('linkedin').invalid
+            ? getErrorMessage(getControl('linkedin'), 'linkedin')
+            : getHintText('linkedin')
+        "
+        [isError]="
+          getControl('linkedin').touched && getControl('linkedin').invalid
+        "
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <app-ui-field
+      [width]="'220px'"
+      [height]="'70px'"
+      [control]="getControl('github')"
+    >
+      <input type="url" formControlName="github" placeholder="GitHub URL" />
+      <app-ui-field-helper-text
+        [text]="
+          getControl('github').touched && getControl('github').invalid
+            ? getErrorMessage(getControl('github'), 'github')
+            : getHintText('github')
+        "
+        [isError]="getControl('github').touched && getControl('github').invalid"
+        [height]="'20px'"
+      >
+      </app-ui-field-helper-text>
+    </app-ui-field>
+
+    <button type="submit" class="submit-button">Submit Form</button>
+  </form>
+</div>
