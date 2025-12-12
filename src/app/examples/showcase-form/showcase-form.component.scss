@@ -17,14 +17,14 @@
 
   .showcase-form {
     display: grid;
-    grid-template-columns: repeat(3, 220px);
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
     gap: 16px;
     align-items: start;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
     width: fit-content;
-    min-width: 100%;
+    min-width: 75%;
 
     .submit-button {
       grid-column: 1 / -1;

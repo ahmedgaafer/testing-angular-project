@@ -1,4 +1,4 @@
-<div class="ui-field-wrapper">
+<div #wrapperElement class="ui-field-wrapper">
   <label class="field-label" [class.empty]="!showLabel()">
     @if (showLabel()) {
     {{ label() }}
@@ -7,6 +7,7 @@
     } }
   </label>
   <div
+    #fieldElement
     class="ui-field"
     [class.invalid]="isInvalid()"
     [class.touched]="isTouched()"

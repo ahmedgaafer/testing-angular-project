@@ -6,6 +6,7 @@ import {
   effect,
   ElementRef,
   inject,
+  viewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UiFieldHelperTextComponent } from '../ui-field-helper-text/ui-field-helper-text.component';
@@ -27,6 +28,10 @@ export class UiFieldComponent {
 
   // ContentChild signal to detect helper text component
   helperText = contentChild(UiFieldHelperTextComponent);
+
+  // ViewChild signals for DOM elements
+  wrapperElement = viewChild<ElementRef<HTMLElement>>('wrapperElement');
+  fieldElement = viewChild<ElementRef<HTMLElement>>('fieldElement');
 
   // Element reference for applying styles
   private elementRef = inject(ElementRef<HTMLElement>);
@@ -74,11 +79,19 @@ export class UiFieldComponent {
     effect(() => {
       const width = this.width();
       const height = this.height();
-      const element = this.elementRef.nativeElement;
 
-      if (element) {
-        element.style.setProperty('--field-width', width);
-        element.style.setProperty('--field-height', height);
+      // Set properties on wrapper element
+      const wrapper = this.wrapperElement()?.nativeElement;
+      if (wrapper) {
+        wrapper.style.setProperty('--field-width', width);
+        wrapper.style.setProperty('--field-height', height);
+      }
+
+      // Set properties on field element
+      const field = this.fieldElement()?.nativeElement;
+      if (field) {
+        field.style.setProperty('--field-width', width);
+        field.style.setProperty('--field-height', height);
       }
     });
   }
